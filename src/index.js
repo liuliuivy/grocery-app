@@ -6,14 +6,14 @@ import * as serviceWorker from './serviceWorker';
 
 
 const Product = props => {
-    const {index, onVote, product} = props;
+    const {onVote, product} = props;
     const {name, votes} = product;
     const plus = () => {
-        onVote('up',index);
+        onVote('up');
         // Call props.onVote to increase the vote count for this product
     };
     const minus = () => {
-        onVote('down',index);
+        onVote('down');
         // Call props.onVote to decrease the vote count for this product
     };
     return (
@@ -55,7 +55,7 @@ pr
         return (
             <ul>
                 {products.map((product,index) =>(
-                    <li key={index} > <Product product={product}  index={index} onVote={this.onVote}/></li>) )}
+                    <li key={index} > <Product product={product} onVote={(dir) => this.onVote(dir, index)}/></li>) )}
             </ul>
         );
     }
